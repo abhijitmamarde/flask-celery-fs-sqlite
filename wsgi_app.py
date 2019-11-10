@@ -1,5 +1,6 @@
 from main_app.app import (flask_app,
-                          celery_app)
+                          celery_app,
+                          db)
 import sqlite3
 
 

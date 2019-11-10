@@ -6,7 +6,7 @@ import os
 
 
 # Extensions
-from main_app.extensions import *
+from main_app.extensions import db
 
 def make_celery(app=None):
     """
@@ -22,7 +22,9 @@ def make_celery(app=None):
         if not os.path.exists(os.path.join(broker_dir, f)):
             os.makedirs(os.path.join(broker_dir, f))
 
-    celery = Celery(app.import_name)
+    celery = Celery(app.import_name,
+                    broker=broker_url,
+                    backend=f"db+{app.config['SQL_ALCHEMY_DATABASE_URI']}")
 
     celery.conf.update({
         'broker_url': broker_url,
@@ -72,6 +74,16 @@ def create_app(settings_override=None):
 
     return app
 
+
+def extensions(app):
+    """
+    Register 0 or more extensions (mutates app instance passed in)
+    :param app: flask app
+    :return: None
+    """
+    db.init_app(app)
+
+    return None
 
 flask_app = create_app()
 celery_app = make_celery(flask_app)

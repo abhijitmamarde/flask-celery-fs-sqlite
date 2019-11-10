@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<style>
+table {
+  border-collapse: collapse;
+  font-size:12px;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+</style>
+<h2>Example: Execute Task</h2>
+<div id="celery-results">
+    {{ celery_results | safe }}
+</div>
+
+
+
+
+{% endblock %}

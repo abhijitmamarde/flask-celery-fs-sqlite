@@ -10,6 +10,8 @@ SECRET_KEY = os.urandom(24)
 # Database Path
 DB_PATH = os.path.join(Path(__file__).parent.parent, 'database.sqlite3')
 
-# Celery config
-CELERY_RESULT_BACKEND = f"db+sqlite:///{DB_PATH}"
-# CELERY_BROKER_URL = 'redis://localhost:6379'
+# SQL Alchemy Database URI
+SQL_ALCHEMY_DATABASE_URI = f"sqlite:///{DB_PATH}"
+
+
+
