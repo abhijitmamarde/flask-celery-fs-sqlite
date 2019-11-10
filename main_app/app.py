@@ -5,6 +5,9 @@ from main_app.celery_task_registry import CELERY_TASK_LIST
 import os
 
 
+# Extensions
+from main_app.extensions import *
+
 def make_celery(app=None):
     """
     Make Celery App
