@@ -1,19 +1,25 @@
-# flask-celery-filesystem
-Example of using Celery with Filesystem Broker
+# flask-celery-fs-sqlite
+Example of using Celery with Filesystem Broker and SQLite3 to store back-end results
 
 ## Instructions
 1. pip install -r requirements.txt in your virtual environment
-2. Launch flask on one terminal
+2. If using a windows os
+   ```
+   pip install pywin32==223 
+   ``` 
+3. Launch flask on one terminal
   ```
   python wsgi_app.py 
   ```
-3. Launch celery on another terminal
+4. Launch celery on another terminal
 ```
 celery worker -A wsgi_app.celery --loglevel=info --pool=solo
 ```
 
-## Task Execution Example
-![Task](https://quantmill.s3.eu-west-2.amazonaws.com/github/task-flask-celery.PNG)
+## Task Submission
+![Task Submission](https://quantmill.s3.eu-west-2.amazonaws.com/github/celery-sqlite.pngG)
 
-## Terminals
-![Terminal](https://quantmill.s3.eu-west-2.amazonaws.com/github/cmder-flask-celery.PNG)
+## Database Results
+![Celery Results](https://quantmill.s3.eu-west-2.amazonaws.com/github/celery-results.PNG)
+
+
