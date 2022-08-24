@@ -3,17 +3,13 @@ Example of using Celery with Filesystem Broker and SQLite3 to store back-end res
 
 ## Instructions
 1. pip install -r requirements.txt in your virtual environment
-2. If using a windows os
-  ```
-   pip install pywin32==223 
-  ``` 
-3. Launch flask on one terminal
+2. Launch flask on one terminal
   ```
   python wsgi_app.py 
   ```
-4. Launch celery on another terminal
+3. Launch celery on another terminal
 ```
-celery worker -A wsgi_app.celery --loglevel=info --pool=solo
+celery --app wsgi_app.celery worker --loglevel=info --pool=solo
 ```
 
 ## Task Submission
